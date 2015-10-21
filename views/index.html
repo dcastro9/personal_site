@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+        <!-- Projects -->
+        <div class="projects">
+            <div class="container">
+                <img class="side_header" src="/static/img/recent_projects.png" />
+                <ul class="recent_projects">
+                    <li>
+                        <div class="project_title"> A Behavioral Imaging Approach to Characterize the Progession of MCI and Alzheimer's Disease</div>
+                        <div class="project_desc"> Our long-term goal is to develop a computational toolset to facilitate our ability to detect and quantify cognitive and behavioral functioning in a more naturalistic, efficient, ethologically valid, and longitudinal manner, both in clinic and at home. This project is a collaboration between the Georgia Institute of Technology(*) and Emory University(**), under Professors Irfan Essa*, David Gutman**, Allan Levey** and Gregory Abowd*. </div>
+                        <div class="project_tags"> Behavioral Imaging, Health, Alzheimer's Disease </div>
+                    </li>
+                    <li>
+                        <div class="project_title"> Video Segmentation and Annotation Project</div>
+                        <div class="project_desc"> The focus of this project is to make our laboratory's research available to other researchers from around the world. We are building a system which allows you to segment and annotate video, in order to build a database of annotated videos for future processing. The segmentation and annotation is the work of Dr. Matthias Grundmann (Google), under his advisor Dr. Irfan Essa, while he was pursuing his doctorate at Georgia Tech. See <a href="http://www.cc.gatech.edu/cpl/projects/videosegmentation/">paper. </a> This project was built on Google Cloud Platform, using Django on GAE, and GCE.</div>
+                        <div class="project_tags"> Segmentation, Annotation, Google Compute Engine </div>
+                    </li>
+                    <li>
+                        <div class="project_title"> Human Recognition Project</div>
+                        <div class="project_desc"> The following project is in collaboration with the Aware Home at Georgia Tech. The purpose of this project is to incorporate sensors into the home that can understand and track your gait over time in order to assess potential medical conditions, and your general health. The initial idea of the project focuses on identifying human beings in the home based on their gait. This work uses the Microsoft Kinect to track the patient's skeletal information, and uses rank correlation metrics to categorize and quickly identify the patient. This work is being done in collaboration with Senior Research Engineer Brian Jones. </div>
+                        <div class="project_tags"> Gait Recognition</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- About me -->
+        <div class="about_me">
+            <div class="container">
+                <img class="side_header" src="/static/img/about_me.png" />
+                <ul class="about_me_3_columns">
+                    <li>
+                        <div class="beard_images"><img src="/static/img/beards/1.png"></div>
+                        <ul class="beard_menu">
+                            <li><a href="javascript:change_beard(1);"><img src="/static/img/beards/1_thumb.png"></a></li>
+                            <li><a href="javascript:change_beard(2);"><img src="/static/img/beards/2_thumb.png"></a></li>
+                            <li><a href="javascript:change_beard(3);"><img src="/static/img/beards/3_thumb.png"></a></li>
+                            <li><a href="javascript:change_beard(4);"><img src="/static/img/beards/4_thumb.png"></a></li>
+                            <li><a href="javascript:change_beard(6);"><img src="/static/img/beards/6_thumb.png"></a></li>
+                            <li><a href="javascript:change_beard(7);"><img src="/static/img/beards/7_thumb.png"></a></li>
+                        </ul>
+                        <div class="beard_req"> *Beards subject to availability, requests may be put in advance. </div>
+                    </li>
+                    <li>
+                        <h1>WHO AM I?</h1>
+                        <p>Hello there! My name is Daniel Castro, I am a PhD student under Dr. Irfan Essa at the Georgia Institute of Technology. I completed my undergraduate degree in Computer Science at GT in May 2013. I do research in the area of Computer Vision, and my interests outside of computing lie heavily in traveling the world to understand diverse cultures, fueling my adrenaline with <a href="http://www.youtube.com/watch?v=-zSfTtn3OtA">skydiving</a> and <a href="http://www.youtube.com/watch?v=I8lbhuufMY0">canyon jumping</a>, writing <a href="http://qkdeepinthought.blogspot.com/2008/09/who-am-i.html">poetry </a>, and spending time becoming a better person :).</p>
+                        <p> A few of the people I admire include <a href="http://www.youtube.com/watch?v=8QyVZrV3d3o">Jason Silva</a>, <a href="http://www.youtube.com/user/devinsupertramp">Devin Supertramp</a>, and <a href="http://www.youtube.com/user/lindseystomp">Lindsey Stirling.</a></p>
+                    </li>
+                    <li>
+                        <h1>PUBLICATIONS / WORK</h1>
+                        <p>Grundmann, M., Kwatra, V., Castro, D., &amp; Essa, I. (2012, April). Calibration-free rolling shutter removal. In Computational Photography (ICCP), 2012 IEEE International Conference on (pp. 1-8). IEEE. <b>Best Paper Award.</b></p>
+                        <p> <b>Google</b>, Engineering Practicum Intern (Summer 2011), Software Engineering Intern (Summer 2012). </p>
+                        <p> <b>Teaching Assistant</b>, CS 4475 (Computational Photography), CS 4474 (Computational Journalism), Barcelona Study Abroad, Summer 2013. </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="contact_me">
+            <div class="container">
+                <div class="contact_me_text">
+                    <div class="contact_header"> Contact Me </div>
+                    <div class="contact_phone"> 404 916 6421 </div>
+                    <div class="contact_email"> dcastro9@gatech.edu </div>
+                    <p> Feel free to send me a note about anything. I love meeting new people. </p>
+                    <p> It makes us <b>empathic.</b> </p>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+function change_beard(val) {
+    $(".beard_images > img").attr("src", "/static/img/beards/" + val + ".png");
+}
+</script>
+
+{% endblock %}

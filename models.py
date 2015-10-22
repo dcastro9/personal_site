@@ -1,5 +1,10 @@
 from google.appengine.ext import ndb
 
+class User(ndb.Model):
+    name = ndb.StringProperty()
+    email = ndb.StringProperty()
+    administrator = ndb.BooleanProperty(default = False)
+
 class Institution(ndb.Model):
     """ Represents the institution of an author. """
     name = ndb.StringProperty()

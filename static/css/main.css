@@ -327,7 +327,23 @@ textarea {
     line-height: 0.9em;
 }
 
+form {
+    margin: 0 auto;
+    text-align: center;
+    padding: 30px;
+    width: 450px;
+    border-bottom: 1px solid #DDD;
+}
 
+#id_abstract, #id_content {
+    width: 100%;
+    height: 200px;
+}
+
+button {
+    padding: 10px;
+    margin: 0 auto;
+}
 
 
 /* ==========================================================================

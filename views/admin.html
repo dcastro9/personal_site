@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% if user.administrator %}
+    <!-- Institution -->
+    <form action="/admin" id="institution" method="post" enctype="multipart/form-data">
+        <h3> Institution </h3>
+        <label> Name of Institution </label>
+        <input name="name" id="id_name" type="text" placeholder="Georgia Institute of Technology" title="full name"/>
+
+        <label> Website </label>
+        <input name="website" id="id_website" type="text" placeholder="http://www.gatech.edu" title="website"/>
+
+        <!-- Submit -->
+        <input type="hidden" value="0" name="mode" />
+        <button id="submit_institution" class="btn btn-large btn-success centered"> Submit </button>
+    </form>
+
+
+    <!-- Author  -->
+    <form action="/admin" id="author" method="post" enctype="multipart/form-data">
+        <h3> Author </h3>
+        <label> Author Name</label>
+        <input name="name" id="id_name" type="text" placeholder="George P. Burdell" title="full name"/>
+
+        <label> Website </label>
+        <input name="website" id="id_website" type="text" placeholder="http://www.authorname.com" title="website"/>
+        
+        <label> Thumbnail </label>
+        <input name="thumbnail" id="id_thumbnail" type="text" placeholder="http://www.imgur.com/i/thumb.png" title="website"/>
+
+        <label> Institution </label>
+        <select name="institution" id="id_institution">
+        {% for institution in institutions %}
+            <option value='{{ institution.key.urlsafe() }}'>{{ institution.name }}</option>
+        {% endfor %}
+        </select>
+        
+        <!-- Submit -->
+        <input type="hidden" value="1" name="mode" />
+        <button id="submit_author" class="btn btn-large btn-success centered"> Submit </button>
+    </form>
+
+
+    <!-- Conference  -->
+    <form action="/admin" id="conference" method="post" enctype="multipart/form-data">
+        <h3> Conference </h3>
+
+        <label> Conference Name </label>
+        <input name="name" id="id_name" type="text" placeholder="Computer Vision and Pattern Recognition" title="full name" />
+
+        <label> Conference Acronym </label>
+        <input name="acronym" id="id_acronym" type="text" placeholder="CVPR" title="acronym"/>
+
+        <!-- Submit -->
+        <input type="hidden" value="2" name="mode" />
+        <button id="submit_conference" class="btn btn-large btn-success centered"> Submit </button>
+    </form>
+
+
+    <!-- Publication -->
+    <form action="/admin" id="publication" method="post" enctype="multipart/form-data">
+        <h3> Publication </h3>
+
+        <label> Title </label>
+        <input name="name" id="id_name" type="text" placeholder="Deep Learning method for Deep Learning" title="full name"/>
+
+        <label> Abstract </label>
+        <textarea name="abstract" id="id_abstract" type="text" cols="70" rows="10" title="abstract"> </textarea>
+
+        <label> Date of Publication </label>
+        <input name="date" id="id_date" type="date" title="date"/>
+
+        <label> Authors </label>
+
+        <select name="authors" id="id_authors" multiple>
+        {% for author in authors %}
+            <option value="{{author.key.urlsafe()}}"> {{author.name}} </option>
+        {% endfor %}
+        </select>
+
+        <label> Citation </label>
+        <input name="citation" id="id_citation" type="text" placeholder="bibtex citation" title="full name"/>
+
+        <label> Conference </label>
+        <select name="conference" id="id_conference">
+        {% for conference in conferences %}
+            <option value='{{ conference.key.urlsafe() }}'>{{ conference.name }}</option>
+        {% endfor %}
+        </select>
+
+        <label> PDF URL</label>
+        <input name="pdf" id="id_pdf" type="text" placeholder="http://bla.com/file.pdf" title="URL to pdf file."/>
+
+        <label> PDF Image</label>
+        <input name="pdfimage" id="id_pdfimage" type="text" placeholder="http://bla.com/file.jpg" title="URL to image file."/>
+
+        <label> Arxiv URL</label>
+        <input name="arxiv" id="id_arxiv" type="text" placeholder="http://arxiv.org/pdf/1505.00687" title="URL to arxiv page."/>
+
+        <label> Project Page URL</label>
+        <input name="projectpage" id="id_projectpage" type="text" placeholder="http://cc.gatech.edu/cpl/projects/dailyactivities/" title="URL to project page."/>
+
+        <!-- Submit -->
+        <input type="hidden" value="3" name="mode" />
+        <button id="submit_publication" class="btn btn-large btn-success centered"> Submit </button>
+    </form>
+
+
+    <!-- Content -->
+    <form action="/admin" id="content" method="post" enctype="multipart/form-data">
+        <h3> Content </h3>
+
+        <label> Name</label>
+        <input name="name" id="id_name" type="text" placeholder="Name of Content" title="Name this extra content."/>
+
+
+        <label> Extra Content </label>
+        <textarea name="content" id="id_content" type="text" rows="10" title="content"> </textarea>
+        <!-- Submit -->
+        <input type="hidden" value="4" name="mode" />
+        <button id="submit_content" class="btn btn-large btn-success centered"> Submit </button>
+    </form>
+
+
+    <!-- Project -->
+    <form action="/admin" id="project" method="post" enctype="multipart/form-data">
+        <h3> Project </h3>
+
+        <label> Project Title</label>
+        <input name="title" id="id_title" type="text" placeholder="Researching ways to do things." title="Title of the project."/>
+
+        <label> Abstract </label>
+        <textarea name="abstract" id="id_abstract" type="text" cols="70" rows="10" title="abstract"> </textarea>
+
+        <label> Authors </label>
+        <select name="authors" id="id_authors" multiple>
+        {% for author in authors %}
+            <option value="{{author.key.urlsafe()}}"> {{author.name}} </option>
+        {% endfor %}
+        </select>
+
+        <label> Project Image</label>
+        <input name="image" id="id_image" type="text" placeholder="http://bla.com/file.jpg" title="URL to image file."/>
+
+        <label> Publications</label>
+        <select name="publications" id="id_publications" multiple>
+        {% for publication in publications %}
+            <option value="{{publication.key.urlsafe()}}"> {{publication.title}} </option>
+        {% endfor %}
+        </select>
+
+        <label> Extra Project Content</label>
+        <select name="contents" id="id_contents" multiple>
+        {% for content in contents %}
+            <option value="{{content.key.urlsafe()}}"> {{content.name}} </option>
+        {% endfor %}
+        </select>
+
+        <!-- Submit -->
+        <input type="hidden" value="5" name="mode" />
+        <button id="submit_project" class="btn btn-large btn-success centered"> Submit </button>
+    </form>
+
+{% endif %}
+{% endblock %}
+
+{% block scripts %}{% endblock %}

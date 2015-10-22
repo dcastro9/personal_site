@@ -24,6 +24,7 @@ class Conference(ndb.Model):
 
     """
     name = ndb.StringProperty()
+    acronym = ndb.StringProperty()
 
 class Publication(ndb.Model):
     """ Represents a publication that has been conducted as part of a project.
@@ -49,10 +50,11 @@ class Content(ndb.Model):
     """ Created for random HTML content we wish to inject into a project.
 
     The HTML is injected into the project page as a repeated property from
-    project (unescaped).
+    project (unescaped). The content name is simply for backend selection
+    purposes (will not be displayed in HTML rendering).
 
     """
-    title = ndb.StringProperty()
+    name = ndb.StringProperty()
     content = ndb.StringProperty()
 
 
@@ -67,10 +69,12 @@ class Project(ndb.Model):
     title = ndb.StringProperty()
     abstract = ndb.StringProperty()
     authors = ndb.KeyProperty(kind = Author, repeated = True)
-    paper_image = ndb.StringProperty()
+    project_image = ndb.StringProperty()
 
     publications = ndb.KeyProperty(kind = Publication, repeated = True)
     extra_content = ndb.KeyProperty(kind = Content, repeated = True)
+    modified = ndb.DateProperty(auto_now = True)
+
 
     @property
     def published(self):

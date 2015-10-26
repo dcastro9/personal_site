@@ -36,14 +36,14 @@ class Publication(ndb.Model):
 
     """
     title = ndb.StringProperty()
-    abstract = ndb.StringProperty()
+    abstract = ndb.TextProperty(indexed = False)
     date = ndb.DateProperty()
     authors = ndb.KeyProperty(kind = Author, repeated = True)
-    citation = ndb.StringProperty()
+    citation = ndb.TextProperty()
     conference = ndb.KeyProperty(kind = Conference)
     pdf = ndb.StringProperty() # URL
-    pdf_image = ndb.StringProperty()
-    arxiv_link = ndb.StringProperty()
+    pdf_image = ndb.BlobProperty()
+    arxiv_link = ndb.StringProperty() # URL
     project_page = ndb.StringProperty() # URL
 
 class Content(ndb.Model):
@@ -55,8 +55,10 @@ class Content(ndb.Model):
 
     """
     name = ndb.StringProperty()
-    content = ndb.StringProperty()
+    content = ndb.TextProperty()
 
+class Tag(ndb.Model):
+    name = ndb.StringProperty()
 
 class Project(ndb.Model):
     """ Project that I have undergone, am undergoing, will undergo, etc.
@@ -67,15 +69,25 @@ class Project(ndb.Model):
 
     """
     title = ndb.StringProperty()
-    abstract = ndb.StringProperty()
+    description = ndb.TextProperty()
     authors = ndb.KeyProperty(kind = Author, repeated = True)
-    project_image = ndb.StringProperty()
+    image = ndb.BlobProperty()
 
     publications = ndb.KeyProperty(kind = Publication, repeated = True)
     extra_content = ndb.KeyProperty(kind = Content, repeated = True)
+    tags = ndb.KeyProperty(kind = Tag, repeated = True)
     modified = ndb.DateProperty(auto_now = True)
 
 
     @property
     def published(self):
         return len(self.publications) > 0
+
+    @property
+    def rendered_tags(self):
+        output = ''
+        for tag in self.tags:
+            item = tag.get()
+            output += item.name + ", "
+        return output[:-2]
+    

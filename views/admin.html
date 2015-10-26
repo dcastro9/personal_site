@@ -64,7 +64,7 @@
         <h3> Publication </h3>
 
         <label> Title </label>
-        <input name="name" id="id_name" type="text" placeholder="Deep Learning method for Deep Learning" title="full name"/>
+        <input name="title" id="id_title" type="text" placeholder="Deep Learning method for Deep Learning" title="full name"/>
 
         <label> Abstract </label>
         <textarea name="abstract" id="id_abstract" type="text" cols="70" rows="10" title="abstract"> </textarea>
@@ -131,8 +131,8 @@
         <label> Project Title</label>
         <input name="title" id="id_title" type="text" placeholder="Researching ways to do things." title="Title of the project."/>
 
-        <label> Abstract </label>
-        <textarea name="abstract" id="id_abstract" type="text" cols="70" rows="10" title="abstract"> </textarea>
+        <label> Description </label>
+        <textarea name="description" id="id_description" type="text" cols="70" rows="10" title="description"> </textarea>
 
         <label> Authors </label>
         <select name="authors" id="id_authors" multiple>
@@ -157,6 +157,10 @@
             <option value="{{content.key.urlsafe()}}"> {{content.name}} </option>
         {% endfor %}
         </select>
+
+        <label> Comma Separated Tags</label>
+        <input name="tags" id="id_tags" type="text" placeholder="Deep Learning, Computer Vision" title="Tags for the project."/>
+
 
         <!-- Submit -->
         <input type="hidden" value="5" name="mode" />

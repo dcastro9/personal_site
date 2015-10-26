@@ -8,21 +8,13 @@
             <div class="container">
                 <img class="side_header" src="/static/img/recent_projects.png" />
                 <ul class="recent_projects">
+                    {% for project in projects %}
                     <li>
-                        <div class="project_title"> A Behavioral Imaging Approach to Characterize the Progession of MCI and Alzheimer's Disease</div>
-                        <div class="project_desc"> Our long-term goal is to develop a computational toolset to facilitate our ability to detect and quantify cognitive and behavioral functioning in a more naturalistic, efficient, ethologically valid, and longitudinal manner, both in clinic and at home. This project is a collaboration between the Georgia Institute of Technology(*) and Emory University(**), under Professors Irfan Essa*, David Gutman**, Allan Levey** and Gregory Abowd*. </div>
-                        <div class="project_tags"> Behavioral Imaging, Health, Alzheimer's Disease </div>
+                        <div class="project_title"> {{project.title}}</div>
+                        <div class="project_desc"> {{project.description}}</div>
+                        <div class="project_tags">{{project.rendered_tags}}</div>
                     </li>
-                    <li>
-                        <div class="project_title"> Video Segmentation and Annotation Project</div>
-                        <div class="project_desc"> The focus of this project is to make our laboratory's research available to other researchers from around the world. We are building a system which allows you to segment and annotate video, in order to build a database of annotated videos for future processing. The segmentation and annotation is the work of Dr. Matthias Grundmann (Google), under his advisor Dr. Irfan Essa, while he was pursuing his doctorate at Georgia Tech. See <a href="http://www.cc.gatech.edu/cpl/projects/videosegmentation/">paper. </a> This project was built on Google Cloud Platform, using Django on GAE, and GCE.</div>
-                        <div class="project_tags"> Segmentation, Annotation, Google Compute Engine </div>
-                    </li>
-                    <li>
-                        <div class="project_title"> Human Recognition Project</div>
-                        <div class="project_desc"> The following project is in collaboration with the Aware Home at Georgia Tech. The purpose of this project is to incorporate sensors into the home that can understand and track your gait over time in order to assess potential medical conditions, and your general health. The initial idea of the project focuses on identifying human beings in the home based on their gait. This work uses the Microsoft Kinect to track the patient's skeletal information, and uses rank correlation metrics to categorize and quickly identify the patient. This work is being done in collaboration with Senior Research Engineer Brian Jones. </div>
-                        <div class="project_tags"> Gait Recognition</div>
-                    </li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>

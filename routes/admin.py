@@ -95,9 +95,16 @@ class Admin(CheckLogin):
         elif mode == '3':    
             # Publication
             date = datetime.strptime(self.request.POST['date'], '%Y-%m-%d')
-            authors = []
-            for author in self.request.params.getall('authors'):
-                authors.append(ndb.Key(urlsafe = author))
+
+            # A bit messy, does author order
+            authors = self.request.params.getall('authors')
+            idx = 0
+            author_order = [int(order_idx) for order_idx in 
+                self.request.POST['order'].split(",")]
+            ordered_authors = []
+            for author_idx in range(len(authors)):
+                ordered_authors.append(ndb.Key(
+                    urlsafe = authors[author_order[author_idx] - 1]))
 
             conference = ndb.Key(urlsafe = self.request.POST['conference'])
 
@@ -113,7 +120,7 @@ class Admin(CheckLogin):
             publication = Publication(title = self.request.POST['title'],
                                       abstract = self.request.POST['abstract'],
                                       date = date,
-                                      authors = authors,
+                                      authors = ordered_authors,
                                       citation = self.request.POST['citation'],
                                       conference = conference,
                                       pdf = self.request.POST['pdf'],

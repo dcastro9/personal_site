@@ -80,8 +80,11 @@
         {% endfor %}
         </select>
 
+        <label> Author Order (csv of order from top to bottom of author selection) </label>
+        <input name="order" id="id_order" type="text" placeholder="3,1,4,2" title="Numbers must be in range of number of authors (so four authors, do 1->4 where 1 is the main author)."/>
+
         <label> Citation </label>
-        <input name="citation" id="id_citation" type="text" placeholder="bibtex citation" title="full name"/>
+        <input name="citation" id="id_citation" type="text" placeholder="bibtex citation" title="Paper citation."/>
 
         <label> Conference </label>
         <select name="conference" id="id_conference">

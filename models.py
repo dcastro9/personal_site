@@ -38,6 +38,7 @@ class Publication(ndb.Model):
     title = ndb.StringProperty()
     abstract = ndb.TextProperty(indexed = False)
     date = ndb.DateProperty()
+    # Order is preserved.
     authors = ndb.KeyProperty(kind = Author, repeated = True)
     citation = ndb.TextProperty()
     conference = ndb.KeyProperty(kind = Conference)

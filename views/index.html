@@ -11,7 +11,7 @@
                 <img class="side_header" src="/static/img/recent_projects.png" />
                 <ul class="recent_projects">
                     {% for project in projects %}
-                    <li class="slick_projects">
+                    <li>
                         <div class="project_title"> {{project.title}}</div>
                         <div class="project_desc"> {{project.description}}</div>
                         <div class="project_tags">{{project.rendered_tags}}</div>
@@ -74,7 +74,7 @@ function change_beard(val) {
 }
 
 $(document).ready(function(){
-  $('.slick_projects').slick({
+  $('.recent_projects').slick({
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 1

@@ -1,5 +1,7 @@
 {% extends "base.html" %}
-
+{% block extra_stylesheets %}
+<link rel="stylesheet" type="text/css" href="/static/js/vendor/slick/slick.css"/>
+{% endblock %}
 
 {% block content %}
 
@@ -9,7 +11,7 @@
                 <img class="side_header" src="/static/img/recent_projects.png" />
                 <ul class="recent_projects">
                     {% for project in projects %}
-                    <li>
+                    <li class="slick_projects">
                         <div class="project_title"> {{project.title}}</div>
                         <div class="project_desc"> {{project.description}}</div>
                         <div class="project_tags">{{project.rendered_tags}}</div>
@@ -70,6 +72,17 @@
 function change_beard(val) {
     $(".beard_images > img").attr("src", "/static/img/beards/" + val + ".png");
 }
+
+$(document).ready(function(){
+  $('.slick_projects').slick({
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1
+  });
+});
 </script>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="/static/js/vendor/slick/slick.min.js"></script>
 
 {% endblock %}

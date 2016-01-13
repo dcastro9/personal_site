@@ -7,6 +7,6 @@ from models import Project
 class Index(CheckLogin):
     def get(self):
         # Render three projects for front page.
-        projects = Project.query().order(-Project.modified).fetch(limit = 3)
+        projects = Project.query().order(-Project.modified).fetch(limit = 4)
         self.templateVars['projects'] = projects
         return self.render("index.html")

@@ -109,13 +109,13 @@ class Admin(CheckLogin):
             conference = ndb.Key(urlsafe = self.request.POST['conference'])
 
             pdf_image_url = self.request.POST['pdfimage']
+            image = ''
             if pdf_image_url:
                 try:
                     content = urllib2.urlopen(pdf_image_url)
                     image = content.read()
                 except urllib2.HTTPError:
                     logging.warning("URL: " + pdf_image_url + "was not found.")
-                    image = ''
 
             publication = Publication(title = self.request.POST['title'],
                                       abstract = self.request.POST['abstract'],

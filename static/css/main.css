@@ -103,6 +103,7 @@ textarea {
     padding: 0.2em 0;
 }
 
+
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
@@ -198,7 +199,15 @@ textarea {
     left: -40px;
 }
 
-.recent_projects, .about_me_3_columns {
+.recent_projects {
+    position: relative;
+    width: 100%;
+    list-style-type: none;
+    margin: 0 0 0 40px;
+    padding: 0;   
+}
+
+.about_me_3_columns {
     position: relative;
     width: 100%;
     list-style-type: none;
@@ -215,7 +224,7 @@ textarea {
     text-decoration: none;
 }
 
-.recent_projects > li, .about_me_3_columns > li {
+.recent_projects li, .about_me_3_columns > li {
     position: relative;
     display: inline-block;
     width: 29%;
@@ -225,7 +234,7 @@ textarea {
     vertical-align: top;
 }
 
-.recent_projects > li {
+.recent_projects li {
     background-color: #486a7c;
     height: 286px;
     color: white;
@@ -266,7 +275,7 @@ textarea {
     text-align: center;
 }
 
-.recent_projects > li > .project_title {
+.recent_projects li > .project_title {
     font-family: 'Open Sans', serif;
     text-align: center;
     font-weight: bold;
@@ -275,7 +284,7 @@ textarea {
     margin-bottom: 5px;
 }
 
-.recent_projects > li > .project_desc {
+.recent_projects li > .project_desc {
     font-family: 'Open Sans', serif;
     font-weight: 300;
     text-align: justify;
@@ -284,7 +293,7 @@ textarea {
 
 }
 
-.recent_projects > li > .project_tags {
+.recent_projects li > .project_tags {
     position: absolute;
     bottom: 3px;
     right: 8px;

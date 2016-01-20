@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block extra_stylesheets %}
 <link rel="stylesheet" type="text/css" href="/static/js/vendor/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="/static/js/vendor/slick/slick-theme.css"/>
 {% endblock %}
 
 {% block content %}
@@ -25,6 +26,7 @@
         <div class="about_me">
             <div class="container">
                 <img class="side_header" src="/static/img/about_me.png" />
+
                 <ul class="about_me_3_columns">
                     <li>
                         <div class="beard_images"><img src="/static/img/beards/1.png"></div>
@@ -75,11 +77,12 @@ function change_beard(val) {
 
 $(document).ready(function(){
   $('.recent_projects').slick({
-    infinite: true,
+    infinite: false,
     slidesToShow: 3,
-    slidesToScroll: 1
+    slidesToScroll: 1,
   });
 });
+
 </script>
 
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
